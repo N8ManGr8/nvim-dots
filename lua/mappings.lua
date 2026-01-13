@@ -29,10 +29,21 @@ if require("nvconfig").ui.tabufline.enabled then
     map("n", "<A-x>", function()
         require("nvchad.tabufline").close_buffer()
     end, { desc = "buffer close" })
+    map("n", "<S-l>", function()
+        require("nvchad.tabufline").next()
+    end, { desc = "buffer goto next" })
+
+    map("n", "<S-h>", function()
+        require("nvchad.tabufline").prev()
+    end, { desc = "buffer goto prev" })
 end
 
--- nvimtree
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+-- Neotree
+map("n", "<leader>e", "<cmd>Neotree toggle=true source=filesystem reveal=true<CR>", { desc = "Toggle Explorer" })
+
+-- Git stuff
+map("n", "<leader>gb", "<cmd>Git blame_line<CR>", { desc = "Git blame line" })
+map("n", "<leader>gh", "<cmd>Git blame<CR>", { desc = "Git blame hunks" })
 
 -- Disable mappings
 local nomap = vim.keymap.del
@@ -40,3 +51,4 @@ local nomap = vim.keymap.del
 -- Disable new terminals
 nomap("n", "<leader>h")
 nomap("n", "<leader>v")
+nomap("n", "<C-n>")
