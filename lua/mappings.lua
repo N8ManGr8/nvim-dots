@@ -23,6 +23,7 @@ end, { desc = "Goto T[y]pe Definition" })
 map({ "n", "t" }, "<leader>ft", function()
     require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "terminal toggleable horizontal term" })
+-- map("t", "<ESC>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 
 -- tabufline
 if require("nvconfig").ui.tabufline.enabled then
@@ -44,6 +45,10 @@ map("n", "<leader>e", "<cmd>Neotree toggle=true source=filesystem reveal=true<CR
 -- Git stuff
 map("n", "<leader>gb", "<cmd>Git blame_line<CR>", { desc = "Git blame line" })
 map("n", "<leader>gh", "<cmd>Git blame<CR>", { desc = "Git blame hunks" })
+
+-- Splits
+map("n", "<leader>|", "<cmd>vsplit<CR>", { desc = "Vertical Split" })
+map("n", "<leader>-", "<cmd>split<CR>", { desc = "Horizontal Split" })
 
 -- Disable mappings
 local nomap = vim.keymap.del

@@ -3,4 +3,4 @@ require("nvchad.configs.lspconfig").defaults()
 local servers = { "html", "cssls", "stylua" }
 vim.lsp.enable(servers)
 
--- read :h vim.lsp.config for changing options of lsp servers
+vim.lsp.inlay_hint.enable(true)
