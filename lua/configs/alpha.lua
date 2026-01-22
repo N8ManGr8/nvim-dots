@@ -9,6 +9,19 @@ dashboard.section.buttons.val = {
   dashboard.button("q", " Quit", ":qa<CR>"),
 }
 
-dashboard.section.footer.val = { "", " Another day of trying not to get fired. " }
+-- Calculate days since start date at OI
+local start_date = { year = 2024, month = 11, day = 11 }
+local now = os.time()
+local start_time = os.time {
+  year = start_date.year,
+  month = start_date.month,
+  day = start_date.day,
+  hour = 0,
+  min = 0,
+  sec = 0,
+}
+
+local days_since = math.floor(os.difftime(now, start_time) / (24 * 60 * 60))
+dashboard.section.footer.val = { "", " Day " .. days_since .. " of trying not to get fired. " }
 
 alpha.setup(dashboard.opts)
