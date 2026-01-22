@@ -128,7 +128,7 @@ return {
         desc = "Command History",
       },
       {
-        "<leader>n",
+        "<leader>N",
         function()
           Snacks.picker.notification()
         end,
@@ -152,8 +152,14 @@ return {
   },
 
   {
-    "nvimdev/dashboard-nvim",
-    lazy = false,
-    opts = require "configs.dashboard",
+    "goolord/alpha-nvim",
+    event = "VimEnter",
+    dependencies = {
+      "nhattVim/alpha-ascii.nvim",
+      opts = require "configs.alpha-ascii",
+    },
+    config = function()
+      require "configs.alpha"
+    end,
   },
 }
