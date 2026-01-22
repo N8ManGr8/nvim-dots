@@ -23,6 +23,36 @@ return {
   },
 
   {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    cmd = "WhichKey",
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show {}
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+      "<leader>",
+      "<c-w",
+      '"',
+      "'",
+      "`",
+      "c",
+      "v",
+      "g",
+    },
+    opts = function()
+      dofile(vim.g.base46_cache .. "whichkey")
+      return {}
+    end,
+    config = function()
+      require "configs.whichkey"
+    end,
+  },
+
+  {
     "kdheepak/lazygit.nvim",
     lazy = true,
     cmd = {
@@ -75,7 +105,54 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    init = function()
+      _G.Snacks = require "snacks"
+    end,
+
     --@type snacks.Config
-    opts = require "configs.snacks",
+    opts = {
+      notifier = {
+        enabled = true,
+        timeout = 6000,
+      },
+      picker = { enabled = true },
+    },
+
+    keys = {
+      {
+        "<leader>:",
+        function()
+          Snacks.picker.command_history()
+        end,
+        desc = "Command History",
+      },
+      {
+        "<leader>n",
+        function()
+          Snacks.picker.notification()
+        end,
+        desc = "Notifications",
+      },
+      {
+        "<leader>gl",
+        function()
+          Snacks.picker.git_log_line()
+        end,
+        desc = "Git Log Line",
+      },
+      {
+        "<leader>gf",
+        function()
+          Snacks.picker.git_log_file()
+        end,
+        desc = "Git Log File",
+      },
+    },
+  },
+
+  {
+    "nvimdev/dashboard-nvim",
+    lazy = false,
+    opts = require "configs.dashboard",
   },
 }
