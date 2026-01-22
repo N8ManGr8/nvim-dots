@@ -1,4 +1,5 @@
 return {
+  { "lukas-reineke/indent-blankline.nvim", enabled = false },
   {
     "stevearc/conform.nvim",
     event = "BufWritePre",
