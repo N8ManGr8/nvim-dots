@@ -7,7 +7,13 @@ local map = vim.keymap.set
 map("i", "jk", "<ESC>")
 
 -- Telescope
-map("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { desc = "Telescope live grep" })
+map(
+  "n",
+  "<leader>/",
+  ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+  { desc = "Telescope live grep", silent = true }
+)
+map("n", "<leader>b", "<cmd>Telescope buffers<CR>", { desc = "Telescope buffers" })
 map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "References" })
 map("n", "gd", function()
   require("telescope.builtin").lsp_definitions { reuse_win = true }
@@ -53,6 +59,9 @@ map("n", "<leader>-", "<cmd>split<CR>", { desc = "Horizontal Split" })
 -- Rename
 map("n", "<leader>cr", require "nvchad.lsp.renamer", { desc = "Rename" })
 
+-- Lazy
+map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Lazy" })
+
 -- Disable mappings
 local nomap = vim.keymap.del
 
@@ -60,3 +69,6 @@ local nomap = vim.keymap.del
 nomap("n", "<leader>h")
 nomap("n", "<leader>v")
 nomap("n", "<C-n>")
+
+-- LSP errors
+map("n", "<leader>x", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show LSP errors" })
