@@ -221,4 +221,87 @@ return {
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
     },
   },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
+  {
+    "pwntester/octo.nvim",
+    cmd = "Octo",
+    opts = {
+      -- or "fzf-lua" or "snacks" or "default"
+      picker = "telescope",
+      -- bare Octo command opens picker of commands
+      enable_builtin = true,
+    },
+    keys = {
+      {
+        "<leader>oi",
+        "<CMD>Octo issue list<CR>",
+        desc = "List GitHub Issues",
+      },
+      {
+        "<leader>op",
+        "<CMD>Octo pr list<CR>",
+        desc = "List GitHub PullRequests",
+      },
+      {
+        "<leader>od",
+        "<CMD>Octo discussion list<CR>",
+        desc = "List GitHub Discussions",
+      },
+      {
+        "<leader>on",
+        "<CMD>Octo notification list<CR>",
+        desc = "List GitHub Notifications",
+      },
+      {
+        "<leader>os",
+        function()
+          require("octo.utils").create_base_search_command { include_current_repo = true }
+        end,
+        desc = "Search GitHub",
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      -- OR "ibhagwan/fzf-lua",
+      -- OR "folke/snacks.nvim",
+      "nvim-tree/nvim-web-devicons", -- optional if file_panel.icons is a function
+    },
+  },
 }

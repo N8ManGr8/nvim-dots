@@ -13,4 +13,10 @@ wk.add {
 
   -- Code
   { "<leader>c", group = "Code" },
+
+  -- Octo
+  { "<leader>o", group = "Octo" },
+
+  -- Trouble
+  { "<leader>x", group = "Trouble" },
 }
