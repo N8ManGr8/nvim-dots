@@ -33,7 +33,7 @@ end, { desc = "terminal toggleable horizontal term" })
 
 -- tabufline
 if require("nvconfig").ui.tabufline.enabled then
-  map("n", "<A-x>", function()
+  map("n", "<leader>tx", function()
     require("nvchad.tabufline").close_buffer()
   end, { desc = "buffer close" })
   map("n", "<S-l>", function()

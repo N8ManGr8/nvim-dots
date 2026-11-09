@@ -186,6 +186,30 @@ return {
   },
 
   {
+    -- floating cmdline popup; hides the bottom command line row (cmdheight=0)
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {
+      cmdline = { view = "cmdline_popup" },
+      -- keep snacks.notifier as the vim.notify handler
+      notify = { enabled = false },
+      -- NvChad already handles LSP hover/signature
+      lsp = {
+        hover = { enabled = false },
+        signature = { enabled = false },
+        progress = { enabled = false },
+      },
+      presets = {
+        bottom_search = false, -- / and ? also use the popup
+        command_palette = true, -- cmdline + completion menu together at top
+        long_message_to_split = true, -- long messages go to a split
+        lsp_doc_border = true,
+      },
+    },
+  },
+
+  {
     "goolord/alpha-nvim",
     event = "VimEnter",
     dependencies = {
